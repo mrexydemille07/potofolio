@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. Rexy Demille | Portofolio Profesional</title>
+    <style>
+        /* --- RESET & VARIABLE --- */
+        :root {
+            --primary: #2c3e50;    /* Dark Navy */
+            --secondary: #ecf0f1;  /* Light Gray */
+            --accent: #2ecc71;     /* Emerald Green */
+            --text-dark: #34495e;
+            --text-light: #ffffff;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background-color: var(--secondary);
+        }
+
+        /* --- LAYOUT UTAMA --- */
+        .main-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR (PROFIL) --- */
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .profile-img-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 5px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .tagline {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-sidebar {
+            width: 100%;
+            margin-top: auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .sidebar a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .sidebar a:hover {
+            color: var(--accent);
+        }
+
+        /* --- KONTEN UTAMA --- */
+        .content-area {
+            flex: 1;
+            padding: 50px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2.section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ---KEAHLIAN (SKILLS) --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-group h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .skill-item::before {
+            content: '✓';
+            color: var(--accent);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* --- PENGALAMAN KERJA --- */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(44, 62, 80, 0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 3px solid var(--card-bg);
+            z-index: 1;
+        }
+
+        .job-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .job-card:hover {
+            background-color: #fafafa;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .job-role {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .job-company {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .job-date {
+            background-color: var(--secondary);
+            color: var(--text-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* --- PENDIDIKAN --- */
+        .edu-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* --- RESPONSIVE HANDLER --- */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                flex: none;
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 30px;
+            }
+            .content-area {
+                padding: 30px 20px;
+            }
+            .job-header {
+                flex-direction: column;
+            }
+            .job-date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <aside class="sidebar">
+        <div class="profile-img-placeholder">R</div>
+        
+        <h1>M. Rexy Demille</h1>
+        <p class="tagline">Generalist Staff & SEO Enthusiast</p>
+        
+        <p style="text-align: center; font-size: 0.9rem; opacity: 0.8; margin-bottom: 30px;">
+            Profesional multifungsi dengan kemampuan beradaptasi tinggi di berbagai sektor industri.
+        </p>
+
+        <div class="contact-sidebar">
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <span>Pekanbaru, Riau</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <span><a href="tel:081261974413">081261974413</a></span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <span><a href="mailto:mrexydemille07@gmail.com">mrexydemille07</a></span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="content-area">
+        
+        <section id="about">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="card">
+                <p>Saya adalah seorang profesional multifungsi dengan pengalaman yang beragam di sektor retail, manufaktur, hingga digital marketing. Saya memiliki kemampuan adaptasi yang baik, mampu bekerja efektif dalam tim, mengelola operasional, dan terbiasa bekerja di bawah tekanan dengan target yang ditentukan.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Keahlian Utama</h2>
+            <div class="card skills-container">
+                <div class="skill-group">
+                    <h3>Digital & Teknis</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Technical SEO</li>
+                        <li class="skill-item">Google Search Console</li>
+                        <li class="skill-item">WordPress</li>
+                        <li class="skill-item">Rekayasa Perangkat Lunak</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Operasional & Industri</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Microsoft Office</li>
+                        <li class="skill-item">Helper Mechanical (Shipyard)</li>
+                        <li class="skill-item">Welding & Fitting (Basic)</li>
+                        <li class="skill-item">Logistik & Distribusi</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title">Pengalaman Kerja</h2>
+            
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-role">Freelancer Technical SEO</div>
+                                <div class="job-company">Digitalfinger (PT. Solusi Komunika Terintegrasi)</div>
+                            </div>
+                            <span class="job-date">Maret 2025 – Maret 2026</span>
+                        </div>
+                        <p>Mengelola optimasi WordPress, membuat artikel optimasi SEO, dan melakukan analisis visibilitas serta peringkat melalui Google Search Console.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-role">Helper</div>
+                                <div class="job-company">PT. Tirta Emas Kemasindo (Jesslyn)</div>
+                            </div>
+                            <span class="job-date">Maret 2025 – Maret 2026</span>
+                        </div>
+                        <p>Bertanggung jawab dalam distribusi produk ke pelanggan serta memastikan pencapaian target penjualan bulanan secara efektif.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-role">Helper Mechanical</div>
+                                <div class="job-company">PT. ASL Shipyard Indonesia (Batam)</div>
+                            </div>
+                            <span class="job-date">Juni 2021 – Mei 2022</span>
+                        </div>
+                        <p>Melakukan servis Crane (Kato, Tadano), servis radiator, repair valve pipa, fitting, dan welding dasar di lingkungan perkapalan.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-role">Staff Toko</div>
+                                <div class="job-company">Boekitinggi Clothing</div>
+                            </div>
+                            <span class="job-date">2019 – 2021</span>
+                        </div>
+                        <p>Melayani pelanggan, pembukuan, stok barang, serta memastikan operasional toko berjalan lancar.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title">Pendidikan</h2>
+            <div class="card edu-card">
+                <div>
+                    <div class="job-role">SMK N 2 Kec. Guguak</div>
+                    <div class="job-company">Jurusan: Rekayasa Perangkat Lunak</div>
+                </div>
+                <span class="job-date">2016 – 2019</span>
+            </div>      
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
